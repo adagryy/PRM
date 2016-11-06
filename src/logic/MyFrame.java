@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,8 +40,7 @@ public class MyFrame extends JFrame implements  KeyListener, ActionListener{
             setPreferredSize(new Dimension(c.windowWidth ,c.windowHeight));
             setLocation(c.windowStartX, c.windowStartY);
             panel = new MyPanel(c, c.panelStartX, c.panelStartY);  
-            setFocusable(true);
-            
+            setFocusable(true);            
             
             add(panel);
             
@@ -63,9 +63,9 @@ public class MyFrame extends JFrame implements  KeyListener, ActionListener{
 
             add(label1);
             add(jb);
-//            add(jb2);
             
-            System.out.println(Color.yellow.brighter().getRGB());
+            drawSpheres();
+            
             setVisible(true);
             
     }
@@ -78,15 +78,40 @@ public class MyFrame extends JFrame implements  KeyListener, ActionListener{
     @Override
     public void keyPressed(KeyEvent evt) {      
         char character = evt.getKeyChar();
+        
         if(character == 'w'){
             panel.col = Color.getHSBColor(0, 0, x);
             x += 0.01;
             if(x > 1)
                 x = 0;
-            System.out.println(x);
+            drawSpheres();
             panel.repaint();
         }
+        if(character == 'w')
+            translationY(50);
+        if(character == 's')
+            translationY(-50);
+        if(character == 'a')
+            translationX(50);
+        if(character == 'd')
+            translationX(-50);
+        if(character == 'y')
+            translationZ(50);
+        if(character == 't')
+            translationZ(-50);
     } 
+    
+    public void drawSpheres(){
+        BufferedImage bi = new BufferedImage(c.panelWidth, c.panelHeight, BufferedImage.TYPE_INT_RGB);
+        Sphere sphere = new Sphere(0, 0, 0, 100, c, new Vector(0, 0, 1500), bi);//(x, y, z, radius, config)
+        panel.img = sphere.createSphere();
+
+//        Sphere sphere2 = new Sphere(0, 0, 0, 100, c, new Vector(-400, 0, 1500), bi);//(x, y, z, radius, config)
+//        panel.img2 = sphere2.createSphere();
+//
+//        Sphere sphere3 = new Sphere(0, 0, 0, 100, c, new Vector(400, 0, 1500), bi);//(x, y, z, radius, config)
+//        panel.img3 = sphere3.createSphere();
+    }
     @Override
     public void keyTyped(KeyEvent evt) {
     }
@@ -97,18 +122,20 @@ public class MyFrame extends JFrame implements  KeyListener, ActionListener{
             System.exit(0);        
     }
     
-    
-    public Point3D multiplyMatrices(Point3D point, boolean flag){
-        double a, b, cc;
-        double angleMatrix[][] = new double[4][4];
-        if(flag == true)
-            angleMatrix = c.angleMatrixforward;
-        else
-            angleMatrix = c.angleMatrixreverse;
-        a = point.x * angleMatrix[0][0] + angleMatrix[0][1] * point.y + angleMatrix[0][2] * point.z;
-        b = point.x * angleMatrix[1][0] + angleMatrix[1][1] * point.y + angleMatrix[1][2] * point.z;
-        cc= point.x * angleMatrix[2][0] + angleMatrix[2][1] * point.y + angleMatrix[2][2] * point.z;
-        return new Point3D(a, b, cc, Color.red);
+    public void translationX(double x){
+        c.source.x += x;
+        drawSpheres();
+        panel.repaint();
+    }
+    public void translationY(double y){
+        c.source.x += y;
+        drawSpheres();
+        panel.repaint();        
+    }
+    public void translationZ(double z){
+        c.source.x += z;
+        drawSpheres();
+        panel.repaint();        
     }
    
     public int nthButton(int n){

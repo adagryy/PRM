@@ -14,15 +14,15 @@ import java.awt.Color;
 public class Point3D {
     public double x, y, z;
     
-    private Color color;
+//    private Color color;
     
     public Point3D(){}
     
-    public Point3D(double x, double y, double z, Color color){
+    public Point3D(double x, double y, double z){
         this.x = x;
         this.y = y;
         this.z = z;
-        this.color = color;
+//        this.color = color;
     }
     
     public void setPoint(Point3D point){
@@ -37,5 +37,10 @@ public class Point3D {
         p.y = this.y - point.y;
         p.z = this.z - point.z;  
         return p;
+    }
+    
+    @Override
+    public String toString(){
+        return x + ", " + y + ", " + z;
     }
 }

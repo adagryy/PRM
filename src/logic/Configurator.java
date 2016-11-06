@@ -8,6 +8,7 @@ package logic;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import structures.Point3D;
 
 /**
  *
@@ -48,7 +49,12 @@ public class Configurator {
     public int buttonWidth = 150;
     public int buttonMarginTop = 10;
     public int distanceBetweenButtons = 25;
-
+    
+    public Point3D source = new Point3D(400, 0, 300);
+    public Point3D observer = new Point3D(0, 0, 0);
+    
+    public float Ia = 100, Iin = 60000, Ka = 0.4f, Kd =  0.75f, Ks = 0.3f, n = 5;
+    
     public double b1[][] = {
 
         {100.0, -250.0, 1500.0},
@@ -72,16 +78,11 @@ public class Configurator {
         {-286, -250.0, 1822}, 
     };        
         
-    public double angleMatrixforward[][] = {
-        {Math.cos(Math.toRadians(angle)), 0, Math.sin(Math.toRadians(angle)), 0},
-        {0, 1, 0, 0},
-        {-1 * Math.sin(Math.toRadians(angle)), 0, Math.cos(Math.toRadians(angle)), 0},
-        {0, 0, 0, 1}
-    };        
-    public double angleMatrixreverse[][] = {
-        {Math.cos(Math.toRadians(-1 * angle)), 0, Math.sin(Math.toRadians(-1 * angle)), 0},
-        {0, 1, 0, 0},
-        {-1 * Math.sin(Math.toRadians(-1 * angle)), 0, Math.cos(Math.toRadians(-1 * angle)), 0},
-        {0, 0, 0, 1}
-    };
+    
+//    public double angleMatrixreverse[][] = {
+//        {Math.cos(Math.toRadians(-1 * angle)), 0, Math.sin(Math.toRadians(-1 * angle)), 0},
+//        {0, 1, 0, 0},
+//        {-1 * Math.sin(Math.toRadians(-1 * angle)), 0, Math.cos(Math.toRadians(-1 * angle)), 0},
+//        {0, 0, 0, 1}
+//    };
 }
