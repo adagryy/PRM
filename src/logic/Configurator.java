@@ -50,10 +50,10 @@ public class Configurator {
     public int buttonMarginTop = 10;
     public int distanceBetweenButtons = 25;
     
-    public Point3D source = new Point3D(400, 0, 300);
+    public Point3D source = new Point3D(0, 100, 1390);
     public Point3D observer = new Point3D(0, 0, 0);
     
-    public float Ia = 100, Iin = 60000, Ka = 0.4f, Kd =  0.75f, Ks = 0.3f, n = 5;
+    public float Ia = 100, Iin = 1000, Ka = 0.4f, Kd =  0.25f, Ks = 0.75f, n = 5;
     
     public double b1[][] = {
 

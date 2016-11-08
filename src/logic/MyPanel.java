@@ -19,7 +19,7 @@ public class MyPanel extends JPanel{
         Configurator c;
         public Image img = null, img2 = null, img3 = null;
         
-        Color col = Color.black;
+        Color col = Color.green;
         
     	public MyPanel(Configurator c, int x, int y) {
                 setLayout(null);
@@ -40,10 +40,10 @@ public class MyPanel extends JPanel{
                 
                 if(img != null)
                     g.drawImage(img, -1 * c.panelWidth / 2, -1 * c.panelHeight / 2, this);
-                if(img2 != null)
-                    g.drawImage(img2, -1 * c.panelWidth / 2, -1 * c.panelHeight / 2, this);
-                if(img3 != null)
-                    g.drawImage(img3, -1 * c.panelWidth / 2, -1 * c.panelHeight / 2, this);                
+//                if(img2 != null)
+//                    g.drawImage(img2, -1 * c.panelWidth / 2, -1 * c.panelHeight / 2, this);
+//                if(img3 != null)
+//                    g.drawImage(img3, -1 * c.panelWidth / 2, -1 * c.panelHeight / 2, this);                
 //               g2d.fillRect(25, 45, 50, 50);
 	}
         

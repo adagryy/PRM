@@ -79,38 +79,40 @@ public class MyFrame extends JFrame implements  KeyListener, ActionListener{
     public void keyPressed(KeyEvent evt) {      
         char character = evt.getKeyChar();
         
-        if(character == 'w'){
-            panel.col = Color.getHSBColor(0, 0, x);
-            x += 0.01;
-            if(x > 1)
-                x = 0;
-            drawSpheres();
-            panel.repaint();
-        }
+//        if(character == 'w'){
+//            panel.col = Color.getHSBColor(0, 0, x);
+//            x += 0.01;
+//            if(x > 1)
+//                x = 0;
+//            drawSpheres();
+//            panel.repaint();
+//        }
         if(character == 'w')
             translationY(50);
         if(character == 's')
             translationY(-50);
         if(character == 'a')
-            translationX(50);
-        if(character == 'd')
             translationX(-50);
+        if(character == 'd')
+            translationX(50);
         if(character == 'y')
-            translationZ(50);
-        if(character == 't')
             translationZ(-50);
+        if(character == 't')
+            translationZ(50);
     } 
     
     public void drawSpheres(){
         BufferedImage bi = new BufferedImage(c.panelWidth, c.panelHeight, BufferedImage.TYPE_INT_RGB);
-        Sphere sphere = new Sphere(0, 0, 0, 100, c, new Vector(0, 0, 1500), bi);//(x, y, z, radius, config)
-        panel.img = sphere.createSphere();
+//        Sphere sphere = new Sphere(0, 0, 0, 100, c, new Vector(-400, 100, 1500), bi, 0.25, 0.75, 5);//(x, y, z, radius, config)
+//        bi = sphere.createSphere();
 
-//        Sphere sphere2 = new Sphere(0, 0, 0, 100, c, new Vector(-400, 0, 1500), bi);//(x, y, z, radius, config)
-//        panel.img2 = sphere2.createSphere();
-//
-//        Sphere sphere3 = new Sphere(0, 0, 0, 100, c, new Vector(400, 0, 1500), bi);//(x, y, z, radius, config)
-//        panel.img3 = sphere3.createSphere();
+//        Sphere sphere2 = new Sphere(0, 0, 0, 100, c, new Vector(0, 100, 1500), bi, 0.5, 0.5, 10);//(x, y, z, radius, config)
+//        bi = sphere2.createSphere();
+
+        Sphere sphere3 = new Sphere(0, 0, 0, 100, c, new Vector(0, 100, 1500), bi, 0.75, 0.25, 100);//(x, y, z, radius, config)
+        bi = sphere3.createSphere();
+        
+        panel.img = bi;
     }
     @Override
     public void keyTyped(KeyEvent evt) {
@@ -123,17 +125,20 @@ public class MyFrame extends JFrame implements  KeyListener, ActionListener{
     }
     
     public void translationX(double x){
+//        System.out.println(c.source.x + ", " + c.source.y + ", " + c.source.z);
         c.source.x += x;
         drawSpheres();
         panel.repaint();
     }
     public void translationY(double y){
-        c.source.x += y;
+//        System.out.println(c.source.x + ", " + c.source.y + ", " + c.source.z);
+        c.source.y += y;
         drawSpheres();
         panel.repaint();        
     }
     public void translationZ(double z){
-        c.source.x += z;
+//        System.out.println(c.source.x + ", " + c.source.y + ", " + c.source.z);
+        c.source.z += z;
         drawSpheres();
         panel.repaint();        
     }
